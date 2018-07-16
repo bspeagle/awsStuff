@@ -26,7 +26,7 @@ do
 	
 	for instance in `aws ec2 describe-instances --region $region --output text --query "Reservations[*].Instances[*].[InstanceId]"`;
 	do
-		echo 'ISTANCEID: '$instance;
+		echo 'INSTANCEID: '$instance;
 		aws ec2 modify-instance-attribute --instance-id $instance --no-disable-api-termination --region $region;
 		aws ec2 terminate-instances --instance-ids $instance --region $region;	
 	done
